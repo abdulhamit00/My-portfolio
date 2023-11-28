@@ -1,0 +1,145 @@
+@import '../../app.scss';
+
+.contact{
+    height: 100%;
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    @include mobile{
+       width: 100%;
+       padding: 10px;
+       flex-direction: column;
+ }
+
+    .textContainer4{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        @include mobile{
+           gap: 20px;
+           text-align: center;
+           align-items: center;
+      }
+        
+        .contact-title{
+            font-size: 100px;
+            line-height: 88px;
+            @include mobile{
+                font-size: 36px;
+          }
+        }
+
+        .span2{
+            font-weight: 300;
+        }
+
+    }
+
+    .formContainer4{
+   flex: 1;
+   position: relative;
+   width: 100%;
+ 
+   @include mobile{
+   width: 100%;
+   height: 100%;
+   }
+   .phoneSvg{
+   stroke: orange ;
+    position: absolute;
+    margin: auto;
+    z-index:-1 ;
+    @include mobile{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+   
+    
+
+}
+
+
+   
+   form{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+
+   
+ 
+ 
+   
+
+   input, textarea{ 
+    padding: 20px;
+    border-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: black;
+
+    @include mobile{
+        padding: 10px;
+  }
+}
+button{
+    padding: 10px;
+    border: none;
+    background-color: orange;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 500;
+    @include mobile{
+    padding: 10px;
+  }
+}
+  
+}
+
+    }
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.path{
+  
+}
