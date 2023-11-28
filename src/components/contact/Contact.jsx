@@ -34,7 +34,7 @@ const Contact = () => {
     setIsSubmitting(true); // İşlem başladığında "Submit" yerine spin'i göster
 
     emailjs
-      .sendForm('service_xbkyu4c', 'template_l65z6wc', formRef.current, 'Ab7T9gx7BLKdGG2EG')
+      .sendForm('service_arh1bkk', 'template_ntilkbd', formRef.current, 'Kb5t-qYbQaCCXQntL')
       .then((result) => {
         setSuccess(true);
         // İşlem tamamlandığında spin'i gizle
@@ -82,7 +82,7 @@ const Contact = () => {
         <motion.h1 animation={animation} className='contact-title'>Let's Work Together</motion.h1>
         <motion.div animation={animation} className="item4">
           <h2 className='info'>Mail</h2>
-          <span className='span'>a.hamit2747@gmail.com</span>
+          <span className='span'>abdulhamit2747@gmail.com</span>
         </motion.div>
         <motion.div animation={animation} className="item4">
           <h2 className='info'>Address</h2>
