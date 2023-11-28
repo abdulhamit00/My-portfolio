@@ -27,6 +27,9 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false); //  İşlem sırasında mı kontrolü
 
+  
+
+
   const isInView = useInView(ref, { margin: '-100px' });
 
   const sendEmail = (e) => {
@@ -124,8 +127,8 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 3, duration: 1 }}
         >
-          <input type="text" required placeholder='Name' name='name' />
-          <input type="email" required placeholder='Email' name='email' />
+          <input type="text" required placeholder='Name' name='from_name' />
+          <input type="email" required placeholder='Email' name='from_email' />
           <textarea rows={8} placeholder='Message' name='message' />
           {isSubmitting ? (
             <div className="lds-ring">
