@@ -1,9 +1,9 @@
-import { motion, useInView } from 'framer-motion';
-import './contact.scss';
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { motion, useInView } from "framer-motion";
+import "./contact.scss";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const animation = {
   initial: {
@@ -27,79 +27,116 @@ const Contact = () => {
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false); //  İşlem sırasında mı kontrolü
 
-  
-
-
-  const isInView = useInView(ref, { margin: '-100px' });
+  const isInView = useInView(ref, { margin: "-100px" });
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true); // İşlem başladığında "Submit" yerine spin'i göster
 
     emailjs
-      .sendForm('service_arh1bkk', 'template_ntilkbd', formRef.current, 'Kb5t-qYbQaCCXQntL')
-      .then((result) => {
-        setSuccess(true);
-        // İşlem tamamlandığında spin'i gizle
-        setIsSubmitting(false); 
-        
-        // Başarı bildirimi göstermek için bir toast kullan
-        toast.success('Email sent successfully', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-      }, (error) => {
-        setError(true);
-        setIsSubmitting(false); // İşlem tamamlandığında spin'i gizle
-        toast.error('Email could not be sent. Please try again later.', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-      });
+      .sendForm(
+        "service_arh1bkk",
+        "template_ntilkbd",
+        formRef.current,
+        "Kb5t-qYbQaCCXQntL"
+      )
+      .then(
+        (result) => {
+          setSuccess(true);
+          // İşlem tamamlandığında spin'i gizle
+          setIsSubmitting(false);
+          disableForm();
+          resetForm()
+
+          // Başarı bildirimi göstermek için bir toast kullan
+          toast.success("Email sent successfully", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        },
+      
+        (error) => {
+          setError(true);
+          setIsSubmitting(false); // İşlem tamamlandığında spin'i gizle
+          toast.error("Email could not be sent. Please try again later.", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        }
+      );
   };
+
+
+
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
+
+// Update the disableForm function to toggle the form disabled state
+const disableForm = () => {
+  const formElements = formRef.current.elements;
+  for (let i = 0; i < formElements.length; i++) {
+    formElements[i].readOnly = true;
+    formElements[i].disabled = true;
+  }
+  setIsFormDisabled(true);
+};
+
+const resetForm = () => {
+  formRef.current.reset(); // Reset the form using its reference
+};
+
 
   return (
     <motion.div
-      className='contact'
+      className="contact"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.div
-        ref={ref}
-        className="textContainer4"
-        animation={animation}
-      >
-        <motion.h1 animation={animation} className='contact-title'>Let's Work Together</motion.h1>
+      <motion.div ref={ref} className="textContainer4" animation={animation}>
+        <motion.h1 animation={animation} className="contact-title">
+          Let's Work Together
+        </motion.h1>
         <motion.div animation={animation} className="item4">
-          <h2 className='info'>Mail</h2>
-          <span className='span'>abdulhamit2747@gmail.com</span>
+          <h2 className="info">Mail</h2>
+          <span className="span">abdulhamit2747@gmail.com</span>
         </motion.div>
         <motion.div animation={animation} className="item4">
-          <h2 className='info'>Address</h2>
-          <span className='span'>Gaziantep</span>
+          <h2 className="info">Address</h2>
+          <span className="span">Gaziantep</span>
         </motion.div>
         <motion.div animation={animation} className="item4">
-          <h2 className='info'>Phone</h2>
-          <span className='span'>+1 123 456</span>
+          <h2 className="info">Phone</h2>
+          <span className="span">+1 123 456</span>
         </motion.div>
       </motion.div>
-      <div className="formContainer4" >
-        <motion.div initial={{ opacity: 1 }} whileInView={{ opacity: 0 }} transition={{ delay: 2, duration: 1 }} className='phoneSvg'>
-          <svg width="450px" height="450px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <motion.path className='path'
+      <div className="formContainer4">
+        <motion.div
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 0 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="phoneSvg"
+        >
+          <svg
+            width="450px"
+            height="450px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              className="path"
               strokeWidth={0.2}
               fill="none"
               initial={{ pathLength: 0 }}
@@ -124,12 +161,12 @@ const Contact = () => {
           ref={formRef}
           onSubmit={sendEmail}
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 3, duration: 1 }}
         >
-          <input type="text" required placeholder='Name' name='from_name' />
-          <input type="email" required placeholder='Email' name='from_email' />
-          <textarea rows={8} placeholder='Message' name='message' />
+          <input className="username" type="text" required placeholder="Name" name="from_name" />
+          <input className="username" type="email" required placeholder="Email" name="from_email" />
+          <textarea rows={8} placeholder="Message" name="message" />
           {isSubmitting ? (
             <div className="lds-ring">
               <div></div>
@@ -138,9 +175,10 @@ const Contact = () => {
               <div></div>
             </div>
           ) : (
-            <button>Submit</button>
+            <button  disabled={isSubmitting || isFormDisabled}>Submit</button>
           )}
         </motion.form>
+
         <ToastContainer />
       </div>
     </motion.div>

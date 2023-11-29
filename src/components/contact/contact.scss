@@ -70,18 +70,28 @@
    display: flex;
    flex-direction: column;
    gap: 20px;
-
+   :disabled{
+   
+  color: black;
+  opacity: 0.5;
+  }
+ 
    
  
  
    
 
-   input, textarea{ 
+   input, textarea { 
     padding: 20px;
     border-color: transparent;
     border: 1px solid white;
     border-radius: 5px;
     color: black;
+
+    :disabled{
+      background-color: black !important; 
+    }
+    
 
     @include mobile{
         padding: 10px;
@@ -140,6 +150,8 @@ button{
     }
   }
 
-.path{
-  
+.username{
+  :disabled{
+    background-color: black !important ;
+  }
 }
